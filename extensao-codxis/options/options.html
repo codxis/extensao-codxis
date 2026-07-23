@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Configurações — CODXIS WEB</title>
+    <link rel="stylesheet" href="options.css">
+  </head>
+  <body>
+    <header class="page-header">
+      <div class="brand">
+        <img src="../icons/icon-48.png" width="48" height="48" alt="">
+        <div>
+          <span>CODXIS WEB</span>
+          <h1>Configurações do dashboard</h1>
+        </div>
+      </div>
+      <p>As preferências ficam somente neste navegador.</p>
+    </header>
+
+    <main>
+      <form id="preferences">
+        <section class="card" aria-labelledby="goal-title">
+          <div class="section-heading">
+            <div>
+              <h2 id="goal-title">Meta</h2>
+              <p>Defina o valor total que deseja vender no mês atual.</p>
+            </div>
+            <div class="security-actions">
+              <button id="unlock" class="secondary-button" type="button">
+                Desbloquear edição
+              </button>
+              <button id="change-password" class="link-button" type="button">
+                Alterar senha
+              </button>
+            </div>
+          </div>
+
+          <div class="fields">
+            <label>
+              Meta mensal
+              <span class="money-input">
+                <span>R$</span>
+                <input
+                  id="amount"
+                  name="amount"
+                  inputmode="decimal"
+                  autocomplete="off"
+                  placeholder="10.000,00"
+                  required
+                >
+              </span>
+            </label>
+          </div>
+          <p id="amount-error" class="field-error" role="alert" hidden>
+            Informe um valor maior que zero.
+          </p>
+        </section>
+
+        <section class="card" aria-labelledby="display-title">
+          <div class="section-heading">
+            <div>
+              <h2 id="display-title">Exibição</h2>
+              <p>Escolha o estado inicial do painel na home do Codxis.</p>
+            </div>
+          </div>
+
+          <label class="switch-row">
+            <span>
+              <strong>Iniciar recolhido</strong>
+              <small>Mostra apenas o cabeçalho até que o painel seja expandido.</small>
+            </span>
+            <input id="collapsed" name="collapsed" type="checkbox">
+          </label>
+        </section>
+
+        <section class="card" aria-labelledby="advanced-title">
+          <div class="section-heading">
+            <div>
+              <h2 id="advanced-title">Diagnóstico</h2>
+              <p>Use apenas ao investigar problemas de captura ou montagem.</p>
+            </div>
+          </div>
+
+          <label class="switch-row">
+            <span>
+              <strong>Ativar logs de diagnóstico</strong>
+              <small>Exibe detalhes no Console do DevTools com o prefixo [CODXIS WEB].</small>
+            </span>
+            <input id="diagnostics" name="diagnostics" type="checkbox">
+          </label>
+        </section>
+
+        <div class="form-footer">
+          <p id="status" role="status" aria-live="polite"></p>
+          <button id="save" type="submit">Salvar configurações</button>
+        </div>
+      </form>
+    </main>
+
+    <div id="password-modal" class="password-modal" hidden>
+      <div class="password-backdrop" data-close-password></div>
+      <div class="password-dialog" role="dialog" aria-modal="true"
+        aria-labelledby="password-title">
+        <form id="password-form">
+          <h2 id="password-title">Acesso à meta</h2>
+          <p id="password-description" class="password-description"></p>
+          <label data-field="current" hidden>Senha atual
+            <input name="currentPassword" type="password" autocomplete="current-password">
+          </label>
+          <label data-field="password">Senha
+            <input name="password" type="password" autocomplete="current-password" required>
+          </label>
+          <label data-field="confirm" hidden>Confirmar senha
+            <input name="confirmation" type="password" autocomplete="new-password">
+          </label>
+          <label class="show-password">
+            <input name="showPassword" type="checkbox">
+            Mostrar senha
+          </label>
+          <p id="password-error" class="password-error" role="alert"
+            aria-live="assertive"></p>
+          <p class="password-help">
+            A senha é armazenada somente neste navegador. Caso seja perdida,
+            será necessário redefinir manualmente pela extensão.
+          </p>
+          <div class="password-actions">
+            <button type="button" class="secondary-button" data-close-password>
+              Cancelar
+            </button>
+            <button id="password-submit" type="submit">Entrar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="../src/storage.js"></script>
+    <script src="../src/password-protection.js"></script>
+    <script src="../src/goal-calculator.js"></script>
+    <script src="options.js"></script>
+  </body>
+</html>

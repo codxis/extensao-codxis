@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CODXIS WEB</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <header>
+      <img src="../icons/icon-48.png" width="38" height="38" alt="">
+      <div>
+        <span>CODXIS WEB</span>
+        <h1>Metas e resultados</h1>
+      </div>
+    </header>
+
+    <main>
+      <div class="notice">
+        Extensão complementar e não oficial para o Codxis Web.
+      </div>
+
+      <section class="summary">
+        <div>
+          <span>Meta configurada</span>
+          <strong id="goal">Não definida</strong>
+        </div>
+        <div>
+          <span>Última captura</span>
+          <strong id="updated">Ainda não sincronizado</strong>
+        </div>
+      </section>
+
+      <p id="message" role="status">
+        Abra a home do Codxis para visualizar o dashboard.
+      </p>
+
+      <div class="actions">
+        <button id="show" type="button">Mostrar dashboard</button>
+        <button id="refresh" class="secondary" type="button">Atualizar dados</button>
+        <button id="options" class="options" type="button">Configurações</button>
+      </div>
+    </main>
+
+    <footer>Os dados permanecem somente neste navegador.</footer>
+    <script src="popup.js"></script>
+  </body>
+</html>

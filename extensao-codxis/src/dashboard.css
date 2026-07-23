@@ -1,0 +1,756 @@
+#avante-dashboard,
+#avante-dashboard * {
+  box-sizing: border-box;
+}
+
+#avante-dashboard {
+  --avante-bg: #ffffff;
+  --avante-text: #0a1938;
+  --avante-muted: #667085;
+  --avante-border: #e7eaf0;
+  --avante-primary: #0a214d;
+  --avante-primary-soft: #eaf0f8;
+  --avante-success: #1ca676;
+  width: 100%;
+  margin: 0 0 20px;
+  padding: 18px;
+  border: 1px solid var(--avante-border);
+  border-radius: 14px;
+  background: var(--avante-bg);
+  box-shadow: 0 7px 24px rgba(24, 34, 52, 0.08);
+  color: var(--avante-text);
+  font-family: Inter, Roboto, "Segoe UI", Arial, sans-serif;
+  line-height: 1.35;
+  grid-column: 1 / -1;
+  position: relative;
+  z-index: 20;
+}
+
+#avante-dashboard.avante-floating {
+  position: fixed;
+  top: 82px;
+  right: 22px;
+  width: min(720px, calc(100vw - 110px));
+  max-height: calc(100vh - 120px);
+  overflow: auto;
+  z-index: 2147483000;
+}
+
+#avante-dashboard .avante-header,
+#avante-dashboard .avante-actions,
+#avante-dashboard .avante-goal-heading,
+#avante-dashboard .avante-goal-numbers,
+#avante-dashboard .avante-form-actions {
+  display: flex;
+  align-items: center;
+}
+
+#avante-dashboard .avante-header {
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 15px;
+}
+
+#avante-dashboard .avante-header h2 {
+  margin: 2px 0 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+#avante-dashboard .avante-eyebrow,
+#avante-dashboard .avante-label {
+  color: var(--avante-muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+}
+
+#avante-dashboard .avante-eyebrow {
+  color: var(--avante-primary);
+}
+
+#avante-dashboard .avante-actions {
+  gap: 9px;
+}
+
+#avante-dashboard .avante-status {
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: #f3f5f8;
+  color: var(--avante-muted);
+  font-size: 11px;
+}
+
+#avante-dashboard .avante-icon-button,
+#avante-dashboard .avante-refresh,
+#avante-dashboard .avante-edit,
+#avante-dashboard .avante-form button {
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+}
+
+#avante-dashboard .avante-icon-button {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: #f3f5f8;
+  color: var(--avante-text);
+  font-size: 16px;
+}
+
+#avante-dashboard .avante-close {
+  color: #8b3440;
+  font-size: 20px;
+  line-height: 1;
+}
+
+#avante-dashboard .avante-dashboard-launcher {
+  display: none;
+}
+
+#avante-dashboard .avante-refresh {
+  display: inline-flex;
+  min-height: 30px;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 9px;
+  border-radius: 8px;
+  background: var(--avante-primary-soft);
+  color: var(--avante-primary);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+#avante-dashboard .avante-body {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(190px, 0.75fr);
+  gap: 12px;
+}
+
+#avante-dashboard .avante-goal-card,
+#avante-dashboard .avante-metric-card,
+#avante-dashboard .avante-form {
+  border: 1px solid var(--avante-border);
+  border-radius: 11px;
+  background: #fbfcfe;
+}
+
+#avante-dashboard .avante-goal-card {
+  padding: 14px 16px;
+}
+
+#avante-dashboard .avante-goal-heading {
+  justify-content: space-between;
+  gap: 12px;
+}
+
+#avante-dashboard .avante-percent {
+  display: block;
+  margin-top: 2px;
+  font-size: 26px;
+  line-height: 1;
+}
+
+#avante-dashboard .avante-edit {
+  padding: 7px 11px;
+  border-radius: 8px;
+  background: var(--avante-primary-soft);
+  color: var(--avante-primary);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+#avante-dashboard .avante-change-password {
+  margin-left: 4px;
+  padding: 6px 8px;
+  border: 0;
+  background: transparent;
+  color: var(--avante-muted);
+  cursor: pointer;
+  font: inherit;
+  font-size: 10px;
+  text-decoration: underline;
+}
+
+#avante-dashboard .avante-progress {
+  height: 9px;
+  margin: 12px 0 8px;
+  overflow: hidden;
+  border-radius: 99px;
+  background: #e9e8f5;
+}
+
+#avante-dashboard .avante-progress span {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #0a214d, #1f5792);
+  transition: width 350ms ease;
+}
+
+#avante-dashboard .avante-explanation {
+  margin: 0 0 13px;
+  color: var(--avante-muted);
+  font-size: 12px;
+}
+
+#avante-dashboard .avante-goal-numbers {
+  gap: 9px;
+}
+
+#avante-dashboard .avante-required-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+  margin-top: 12px;
+}
+
+#avante-dashboard .avante-required-metrics > div,
+#avante-dashboard .avante-surplus {
+  padding: 10px;
+  border-radius: 9px;
+  background: #f1f4f8;
+}
+
+#avante-dashboard .avante-required-metrics span,
+#avante-dashboard .avante-surplus span {
+  display: block;
+  color: var(--avante-muted);
+  font-size: 10px;
+}
+
+#avante-dashboard .avante-required-metrics strong,
+#avante-dashboard .avante-surplus strong {
+  display: block;
+  margin-top: 3px;
+  font-size: 13px;
+}
+
+#avante-dashboard .avante-sales-chart {
+  margin-top: 12px;
+  padding: 12px 12px 8px;
+  border: 1px solid var(--avante-border);
+  border-radius: 10px;
+  background: #fff;
+}
+
+#avante-dashboard .avante-chart-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+#avante-dashboard .avante-chart-heading h3 {
+  margin: 2px 0 0;
+  font-size: 13px;
+}
+
+#avante-dashboard .avante-chart-legend {
+  color: var(--avante-primary);
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+#avante-dashboard .avante-chart-legend[hidden] {
+  display: none;
+}
+
+#avante-dashboard .avante-chart-canvas {
+  position: relative;
+  min-width: 0;
+}
+
+#avante-dashboard .avante-chart-canvas svg {
+  display: block;
+  width: 100%;
+  height: 170px;
+  overflow: visible;
+}
+
+#avante-dashboard .avante-chart-canvas svg[hidden] {
+  display: none;
+}
+
+#avante-dashboard .avante-chart-axis {
+  stroke: #dfe4eb;
+  stroke-width: 1;
+}
+
+#avante-dashboard .avante-chart-goal {
+  stroke: var(--avante-primary);
+  stroke-dasharray: 5 4;
+  stroke-width: 1.2;
+}
+
+#avante-dashboard .avante-chart-goal-label {
+  fill: var(--avante-primary);
+  font-size: 9px;
+  font-weight: 700;
+}
+
+#avante-dashboard .avante-chart-area {
+  fill: rgba(28, 166, 118, .1);
+}
+
+#avante-dashboard .avante-chart-line {
+  fill: none;
+  stroke: var(--avante-success);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.5;
+}
+
+#avante-dashboard .avante-chart-point {
+  fill: #fff;
+  stroke: var(--avante-success);
+  stroke-width: 2.5;
+  cursor: pointer;
+}
+
+#avante-dashboard .avante-chart-point:hover,
+#avante-dashboard .avante-chart-point:focus {
+  fill: var(--avante-success);
+  outline: none;
+  stroke-width: 3;
+}
+
+#avante-dashboard .avante-chart-point:focus-visible {
+  filter: drop-shadow(0 0 3px rgba(28, 166, 118, .65));
+}
+
+#avante-dashboard .avante-chart-date {
+  fill: var(--avante-muted);
+  font-size: 9px;
+}
+
+#avante-dashboard .avante-chart-tooltip {
+  position: absolute;
+  z-index: 2;
+  width: max-content;
+  max-width: min(220px, 80vw);
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: #17212f;
+  box-shadow: 0 7px 18px rgba(10, 25, 56, .2);
+  color: #fff;
+  font-size: 10px;
+  line-height: 1.5;
+  pointer-events: none;
+  white-space: pre-line;
+}
+
+#avante-dashboard .avante-chart-tooltip[hidden] {
+  display: none;
+}
+
+#avante-dashboard .avante-chart-empty,
+#avante-dashboard .avante-chart-hint {
+  margin: 16px 0 8px;
+  color: var(--avante-muted);
+  font-size: 11px;
+  text-align: center;
+}
+
+#avante-dashboard .avante-chart-empty[hidden],
+#avante-dashboard .avante-chart-hint[hidden] {
+  display: none;
+}
+
+#avante-dashboard .avante-surplus {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 12px;
+  border: 1px solid #b7e3d2;
+  background: #e9f8f2;
+  color: #087443;
+}
+
+#avante-dashboard .avante-surplus p {
+  margin: 0;
+  font-size: 12px;
+  text-align: right;
+}
+
+#avante-dashboard .avante-surplus p strong {
+  display: inline;
+}
+
+#avante-dashboard .avante-surplus[hidden] {
+  display: none;
+}
+
+#avante-dashboard .avante-goal--completed,
+#avante-dashboard .avante-goal--surplus {
+  border-color: #96d6bf;
+  background: linear-gradient(135deg, #fbfffd, #effaf6);
+}
+
+#avante-dashboard .avante-goal--completed .avante-percent,
+#avante-dashboard .avante-goal--surplus .avante-percent {
+  color: var(--avante-success);
+}
+
+#avante-dashboard .avante-goal--surplus .avante-progress span {
+  background: linear-gradient(90deg, #1ca676, #d4a72c);
+}
+
+#avante-dashboard .avante-goal-numbers > div {
+  min-width: 0;
+  flex: 1;
+}
+
+#avante-dashboard .avante-goal-numbers span,
+#avante-dashboard .avante-metric-card small {
+  display: block;
+  color: var(--avante-muted);
+  font-size: 10px;
+}
+
+#avante-dashboard .avante-metric-card .avante-updated {
+  margin-top: 7px;
+  color: #7c8493;
+}
+
+#avante-dashboard .avante-goal-numbers strong {
+  display: block;
+  margin-top: 2px;
+  overflow: hidden;
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#avante-dashboard .avante-metric-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+}
+
+#avante-dashboard .avante-metric-icon {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  place-items: center;
+  border-radius: 11px;
+  background: #e6f8f1;
+  color: var(--avante-success);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+#avante-dashboard .avante-metric-card strong {
+  display: block;
+  margin: 5px 0 3px;
+  font-size: clamp(19px, 2vw, 27px);
+}
+
+#avante-dashboard .avante-form {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(180px, 1fr) auto;
+  gap: 12px;
+  padding: 14px;
+}
+
+#avante-dashboard .avante-form[hidden],
+#avante-dashboard.is-collapsed .avante-body {
+  display: none;
+}
+
+#avante-dashboard .avante-form label {
+  color: var(--avante-muted);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+#avante-dashboard .avante-money-input {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+  overflow: hidden;
+  border: 1px solid #d9dde5;
+  border-radius: 8px;
+  background: white;
+}
+
+#avante-dashboard .avante-money-input span {
+  padding-left: 10px;
+  color: var(--avante-muted);
+}
+
+#avante-dashboard .avante-form input,
+#avante-dashboard .avante-form select {
+  width: 100%;
+  min-height: 36px;
+  margin-top: 5px;
+  padding: 7px 10px;
+  border: 1px solid #d9dde5;
+  border-radius: 8px;
+  background: white;
+  color: var(--avante-text);
+  font: inherit;
+}
+
+#avante-dashboard .avante-money-input input {
+  margin: 0;
+  border: 0;
+  outline: 0;
+}
+
+#avante-dashboard .avante-form-actions {
+  align-self: end;
+  gap: 7px;
+}
+
+#avante-dashboard .avante-form button {
+  min-height: 36px;
+  padding: 7px 12px;
+  border-radius: 8px;
+  background: #eceff4;
+  color: var(--avante-text);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+#avante-dashboard .avante-form button[type="submit"] {
+  background: var(--avante-primary);
+  color: white;
+}
+
+#avante-dashboard.is-collapsed {
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+}
+
+#avante-dashboard.is-collapsed .avante-header {
+  margin-bottom: 0;
+}
+
+#avante-dashboard.is-closed {
+  position: fixed !important;
+  top: 82px !important;
+  right: 18px !important;
+  width: auto !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  grid-column: auto;
+  z-index: 2147483000;
+}
+
+#avante-dashboard.is-closed > :not(.avante-dashboard-launcher) {
+  display: none !important;
+}
+
+#avante-dashboard.is-closed .avante-dashboard-launcher {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 1px solid rgba(10, 33, 77, .16);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 6px 20px rgba(10, 25, 56, .16);
+  color: var(--avante-primary);
+  cursor: pointer;
+  place-items: center;
+  transition: box-shadow 160ms ease, transform 160ms ease;
+}
+
+#avante-dashboard.is-closed .avante-dashboard-launcher:hover {
+  box-shadow: 0 9px 26px rgba(10, 25, 56, .22);
+  transform: translateY(-1px);
+}
+
+#avante-dashboard.is-closed .avante-dashboard-launcher:focus-visible {
+  outline: 3px solid rgba(10, 33, 77, .2);
+  outline-offset: 2px;
+}
+
+#avante-dashboard .avante-dashboard-launcher svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+#avante-dashboard .avante-password-modal {
+  position: fixed;
+  z-index: 2147483646;
+  inset: 0;
+}
+
+#avante-dashboard .avante-password-modal[hidden] {
+  display: none;
+}
+
+#avante-dashboard .avante-password-backdrop {
+  position: absolute;
+  background: rgba(10, 25, 56, .48);
+  inset: 0;
+}
+
+#avante-dashboard .avante-password-dialog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(390px, calc(100vw - 32px));
+  max-height: calc(100vh - 32px);
+  padding: 22px;
+  overflow: auto;
+  border: 1px solid var(--avante-border);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 22px 60px rgba(10, 25, 56, .24);
+  transform: translate(-50%, -50%);
+}
+
+#avante-dashboard .avante-password-dialog h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+#avante-dashboard .avante-password-description,
+#avante-dashboard .avante-password-help {
+  color: var(--avante-muted);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+#avante-dashboard .avante-password-dialog label:not(.avante-show-password) {
+  display: block;
+  margin-top: 13px;
+  color: var(--avante-text);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+#avante-dashboard .avante-password-dialog label[hidden] {
+  display: none;
+}
+
+#avante-dashboard .avante-password-dialog input[type="password"],
+#avante-dashboard .avante-password-dialog input[type="text"] {
+  width: 100%;
+  min-height: 38px;
+  margin-top: 5px;
+  padding: 8px 10px;
+  border: 1px solid #d9dde5;
+  border-radius: 8px;
+  color: var(--avante-text);
+  font: inherit;
+}
+
+#avante-dashboard .avante-show-password {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 11px;
+  color: var(--avante-muted);
+  cursor: pointer;
+  font-size: 11px;
+}
+
+#avante-dashboard .avante-password-error {
+  min-height: 17px;
+  margin: 10px 0 0;
+  color: #b42318;
+  font-size: 11px;
+}
+
+#avante-dashboard .avante-password-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+#avante-dashboard .avante-password-actions button {
+  min-height: 36px;
+  padding: 8px 13px;
+  border: 0;
+  border-radius: 8px;
+  background: #eceff4;
+  color: var(--avante-text);
+  cursor: pointer;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+#avante-dashboard .avante-password-actions button[type="submit"] {
+  background: var(--avante-primary);
+  color: #fff;
+}
+
+#avante-dashboard .avante-password-actions button:disabled {
+  cursor: wait;
+  opacity: .6;
+}
+
+@media (max-width: 780px) {
+  #avante-dashboard.avante-floating {
+    top: 70px;
+    right: 12px;
+    width: calc(100vw - 24px);
+  }
+
+  #avante-dashboard.is-closed {
+    top: 70px !important;
+    right: 12px !important;
+    width: auto !important;
+  }
+
+  #avante-dashboard .avante-body {
+    grid-template-columns: 1fr;
+  }
+
+  #avante-dashboard .avante-form {
+    grid-template-columns: 1fr;
+  }
+
+  #avante-dashboard .avante-required-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  #avante-dashboard .avante-chart-canvas svg {
+    height: 145px;
+  }
+
+  #avante-dashboard .avante-form-actions {
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+  #avante-dashboard {
+    padding: 13px;
+  }
+
+  #avante-dashboard .avante-status {
+    display: none;
+  }
+
+  #avante-dashboard .avante-refresh span {
+    display: none;
+  }
+
+  #avante-dashboard .avante-goal-numbers {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}
