@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "CODXIS WEB — Metas e Resultados",
   "description": "Dashboard complementar, não oficial, para o Codxis Web.",
-  "version": "1.4.0",
+  "version": "1.7.1",
   "permissions": ["storage", "activeTab"],
   "host_permissions": ["http://*/*", "https://*/*"],
   "background": {
